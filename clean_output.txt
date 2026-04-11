@@ -1,0 +1,127 @@
+=================================================================
+   SIH-Inspired Neuro-Fuzzy Disease Prediction System
+   with Activation Function Analysis
+=================================================================
+
+[Step 1] Loading and preprocessing dataset...
+  Training samples : 614
+  Testing samples  : 154
+  Features         : 8
+
+=================================================================
+[Step 2] Neural Network - Activation Function Comparison
+=================================================================
+
+  > Training with SIGMOID ... Accuracy: 0.7078
+
+  > Training with TANH ... Accuracy: 0.7078
+
+  > Training with RELU ... Accuracy: 0.7143
+
+  > Training with LEAKY_RELU ... Accuracy: 0.7403
+
+=================================================================
+[Step 3] Standalone ANFIS (Neuro-Fuzzy System)
+=================================================================
+  Selected features: ['Age', 'Insulin', 'BMI', 'Glucose']
+  Number of rules  : 16
+    Epoch  50/200 | Loss: 0.6847 | Train Acc: 0.6661
+    Epoch 100/200 | Loss: 0.6772 | Train Acc: 0.6824
+    Epoch 150/200 | Loss: 0.6701 | Train Acc: 0.6971
+    Epoch 200/200 | Loss: 0.6633 | Train Acc: 0.7003
+
+  [OK] ANFIS Test Accuracy: 0.6623
+
+=================================================================
+[Step 4] Hybrid Pipeline - ANFIS Fuzzification -> Neural Network
+=================================================================
+  Original features : 8
+  Fuzzy features    : 16  (8 inputs x 2 MFs)
+  Using best activation: leaky_relu
+
+  [OK] Hybrid Test Accuracy: 0.7208
+
+=================================================================
+[Step 5] DETAILED RESULTS & METRICS
+=================================================================
+
+  -- Metrics Comparison Table --
+
+  Model             Accuracy  Precision   Recall  F1-Score
+  ------------------------------------------------------
+  NN-sigmoid          0.7078     0.5849   0.5741    0.5794
+  NN-tanh             0.7078     0.5957   0.5185    0.5545
+  NN-relu             0.7143     0.6136   0.5000    0.5510
+  NN-leaky_relu       0.7403     0.6458   0.5741    0.6078
+  ANFIS               0.6623     0.6250   0.0926    0.1613
+  Hybrid(leaky_relu)    0.7208     0.6222   0.5185    0.5657
+
+  -- Confusion Matrices --
+
+  NN-sigmoid:
+    +-----------------+----------+----------+
+    |                 | Pred: 0  | Pred: 1  |
+    +-----------------+----------+----------+
+    | Actual: 0 (Neg) |  TN=78   |  FP=22   |
+    | Actual: 1 (Pos) |  FN=23   |  TP=31   |
+    +-----------------+----------+----------+
+
+  NN-tanh:
+    +-----------------+----------+----------+
+    |                 | Pred: 0  | Pred: 1  |
+    +-----------------+----------+----------+
+    | Actual: 0 (Neg) |  TN=81   |  FP=19   |
+    | Actual: 1 (Pos) |  FN=26   |  TP=28   |
+    +-----------------+----------+----------+
+
+  NN-relu:
+    +-----------------+----------+----------+
+    |                 | Pred: 0  | Pred: 1  |
+    +-----------------+----------+----------+
+    | Actual: 0 (Neg) |  TN=83   |  FP=17   |
+    | Actual: 1 (Pos) |  FN=27   |  TP=27   |
+    +-----------------+----------+----------+
+
+  NN-leaky_relu:
+    +-----------------+----------+----------+
+    |                 | Pred: 0  | Pred: 1  |
+    +-----------------+----------+----------+
+    | Actual: 0 (Neg) |  TN=83   |  FP=17   |
+    | Actual: 1 (Pos) |  FN=23   |  TP=31   |
+    +-----------------+----------+----------+
+
+  ANFIS:
+    +-----------------+----------+----------+
+    |                 | Pred: 0  | Pred: 1  |
+    +-----------------+----------+----------+
+    | Actual: 0 (Neg) |  TN=97   |  FP=3    |
+    | Actual: 1 (Pos) |  FN=49   |  TP=5    |
+    +-----------------+----------+----------+
+
+  Hybrid(leaky_relu):
+    +-----------------+----------+----------+
+    |                 | Pred: 0  | Pred: 1  |
+    +-----------------+----------+----------+
+    | Actual: 0 (Neg) |  TN=83   |  FP=17   |
+    | Actual: 1 (Pos) |  FN=26   |  TP=28   |
+    +-----------------+----------+----------+
+
+  -- Accuracy Summary --
+
+  NN-sigmoid       : 0.7078  ############################
+  NN-tanh          : 0.7078  ############################
+  NN-relu          : 0.7143  ############################
+  NN-leaky_relu    : 0.7403  #############################
+  ANFIS            : 0.6623  ##########################
+  Hybrid(leaky_relu) : 0.7208  ############################
+
+=================================================================
+[Step 6] Saving comparison plots...
+=================================================================
+
+  [PLOT 1] Saved as: results_comparison.png
+  [PLOT 2] Saved as: metrics_comparison.png
+  [PLOT 3] Saved as: confusion_matrices.png
+
+[DONE] All results generated successfully.
+
