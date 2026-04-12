@@ -41,7 +41,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## What This Project Does (for Viva)
+## What This Project Does
 
 1. **Loads** the Pima Indians Diabetes Dataset (768 patient records, 8 medical features)
 2. **Preprocesses** the data (handles missing values, normalizes features, splits 80/20)
