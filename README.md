@@ -1,4 +1,4 @@
-# SIH-Inspired Neuro-Fuzzy Disease Prediction System
+# Neuro-Fuzzy Based Diabetes Prediction with Activation Function Analysis 
 
 ## Folder Structure
 ```
